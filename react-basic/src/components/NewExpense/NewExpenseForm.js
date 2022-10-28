@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../style/NewExpense/NewExpenseForm.css";
 
-const NewExpenseForm = ({ closeInput }) => {
+const NewExpenseForm = ({ closeInput, onSaveExpenseData }) => {
   const [inputValue, setInputValue] = useState({
     title: "",
     amount: "",
@@ -15,13 +15,31 @@ const NewExpenseForm = ({ closeInput }) => {
     });
   };
 
-  const clickClose = (e) => {
-    e.preventDefalut();
+  const clickClose = () => {
+    closeInput(false);
+  };
+
+  const onSubmitExpense = (e) => {
+    e.preventDefault();
+
+    const expenseData = {
+      title: inputValue.title,
+      amount: inputValue.amount,
+      date: new Date(inputValue.date),
+    };
+
+    onSaveExpenseData(expenseData);
+
+    setInputValue({
+      title: "",
+      amount: "",
+      date: "",
+    });
     closeInput(false);
   };
 
   return (
-    <form>
+    <form onSubmit={onSubmitExpense}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -56,7 +74,7 @@ const NewExpenseForm = ({ closeInput }) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button onClick={clickClose}>Close</button>
+        <input type="button" onClick={clickClose} value="Close" />
         <button type="submit">Add Expense</button>
       </div>
     </form>

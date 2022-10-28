@@ -6,9 +6,13 @@ import Card from "../UI/Card";
 function Expenses({ expenses }) {
   return (
     <Card className="expenses">
-      {expenses.map((expense) => (
-        <ExpenseItem key={expense.id} expense={expense} />
-      ))}
+      {expenses
+        // .sort((a, b) => {
+        //   return new Date(b.expenses.date) - new Date(a.expenses.date);
+        // })
+        .map((expense) => (
+          <ExpenseItem key={expense.id} expense={expense} />
+        ))}
     </Card>
   );
 }

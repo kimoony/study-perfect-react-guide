@@ -9,7 +9,7 @@ function ExpenseDate({ date }) {
   return (
     <div className="expense-date">
       <div className="expense-date__year">{year}년</div>
-      <div calssName="expense-date__month">{month}</div>
+      <div className="expense-date__month">{month}</div>
       <div className="expense-date__day">{day}</div>
     </div>
   );
