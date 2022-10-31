@@ -20,8 +20,6 @@ const NewExpenseForm = ({ closeInput, onSaveExpenseData }) => {
   };
 
   const onSubmitExpense = (e) => {
-    e.preventDefault();
-
     const expenseData = {
       title: inputValue.title,
       amount: inputValue.amount,

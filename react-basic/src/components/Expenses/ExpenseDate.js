@@ -1,10 +1,12 @@
 import React from "react";
+import moment from "moment";
+import "moment/locale/ko";
 import "../../style/Expenses/ExpenseDate.css";
 
 function ExpenseDate({ date }) {
-  const month = date.toLocaleString("ko", { month: "long" });
-  const day = date.toLocaleString("ko", { day: "2-digit" });
-  const year = date.getFullYear();
+  const month = moment(date).format("MM");
+  const day = moment(date).format("DD");
+  const year = moment(date).format("YYYY");
 
   return (
     <div className="expense-date">
